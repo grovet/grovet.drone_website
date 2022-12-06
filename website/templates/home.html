@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if curr_user.email == 'admin@proconics.co.za' %}
+<div class="fieldbar">
+    <h3>{{ curr_user.first_name }}</h3>
+</div>
+<div class="home-frame">
+    <div class="iframe-div main-frame">
+        <iframe name="mainiFrame" class="iframe" src="https://cloud.pix4d.com/dataset/1133802/map?shareToken=051e5817-30a4-4ddd-835f-40049ad02c93"></iframe>
+    </div>
+</div>
+{% else %}
+<div class="fieldbar">
+    <h3>{{ curr_user.first_name }}</h3>
+    <div class="dropdown-bar">
+        <button onclick="myFunction()" class="dropbtn">PROJECTS <i class="fa fa-caret-down"></i></button>
+        <div id="myDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            {% for project in projects %}
+                <a href="{{ project[1] }}" target="mainiFrame">{{ project[0] }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="home-frame">
+    <div class="iframe-div main-frame">
+        <iframe name="mainiFrame" class="iframe" src="{{ projects[0][1] }}"></iframe>
+    </div>
+</div>
+{% endif %}
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+</script>
+{% endblock %}

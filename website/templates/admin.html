@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+<div class="db-addforms">
+    <form method="POST" class="add-user">
+        <h3 align="center">Add Users</h3>
+        <div class="form-group">
+            <label for="email">Email Adress</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first Name">
+        </div>
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter a Password">
+        </div>
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password">
+        </div>
+        <br />
+        <button type="submit" class="submit-button" value="button1" name="buttonName">Submit</button>
+    </form>
+    <form method="POST" class="add-project">
+        <h3 align="center">Add a Project</h3>
+        <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input type="text" class="form-control" id="projectName" name="projectName" placeholder="Enter Project Name">
+        </div>
+        <div class="form-group">
+            <label for="projectUrl">Project URL</label>
+            <input type="url" class="form-control" id="projectUrl" name="projectUrl" placeholder="Enter Pix4D url">
+        </div>
+        <br />
+        <button type="submit" class="submit-button" value="button2" name="buttonName">Submit</button>
+    </form>
+    <form method="POST" class="add-to-project">
+        <h3 align="center">Add User to Project</h3>
+        <div class="form-group">
+            <label for="email">Email Adress</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <label for="projectUrl">Project URL</label>
+            <input type="url" class="form-control" id="projectUrl" name="projectUrl" placeholder="Enter Pix4D url">
+        </div>
+        <br />
+        <button type="submit" class="submit-button" value="button3" name="buttonName">Submit</button>
+    </form>
+</div>
+<div class="db-viewer">
+    <div class="user-viewer">
+        <h3>Active Users</h3>
+        <table id="data" class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Records</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users %}
+                <tr>
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.first_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.records }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="project-viewer">
+        <h3>Active Projects</h3>
+        <table id="data" class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Project Name</th>
+                <th>Project Url</th>
+                <th>Records</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for project in projects %}
+                <tr>
+                  <td>{{ project.id }}</td>
+                  <td>{{ project.project_name }}</td>
+                  <td>{{ project.project_url }}</td>
+                  <td>{{ project.records }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-window">
+    <div class="login-wrapper">
+        <h3>PROCONICS RPAS PORTAL</h3>
+        <img src="/static/drone-icon.png">
+        <form method="POST">
+            <div class="form-field">
+                <input type="email" placeholder="Email / Username" name="email" required/>
+            </div>  
+            <div class="form-field">
+                <input type="password" placeholder="Password" name="password" required/>
+            </div> 
+            <div class="form-field">
+                <button class="btn" type="submit"><span>Log in </span></button>
+            </div>
+        </form>
+    </div>
+    <div class="login-slides">
+        <div class="slideshow-containerx">
+            <div class="mySlidesx fadex">
+              <div class="numbertextx">1 / 3</div>
+              <img src="/static/img01.png" style="width:100%">
+              <div class="textx">Caption Text</div>
+            </div>
+            <div class="mySlidesx fadex">
+                <div class="numbertextx">2 / 3</div>
+                <img src="/static/img02.png" style="width:100%">
+                <div class="textx">Caption Two</div>
+            </div>
+            <div class="mySlidesx fadex">
+                <div class="numbertextx">3 / 3</div>
+                <img src="/static/img03.png" style="width:100%">
+                <div class="textx">Caption Three</div>
+            </div>
+            <a class="prevx" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="nextx" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dotx" onclick="currentSlide(1)"></span>
+            <span class="dotx" onclick="currentSlide(2)"></span>
+            <span class="dotx" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlidesx");
+        let dots = document.getElementsByClassName("dotx");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+{% endblock %}

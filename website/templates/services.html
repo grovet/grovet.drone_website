@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}RPAS Services{% endblock %}
+
+{% block content %}
+<div class="fieldbar-service">
+    <h3>{{ curr_user.first_name }}</h3>
+    <button>Contact Us</button>
+    <button>Website</button>
+    <h2>RPAS Services</h2>
+</div>
+<div class="service-content">
+    <div class="service-form">
+        <form action="?" class="survey-form sur-grid-container">
+            <h3 class="sur-grid-item1">Surveying</h3>
+            <div class="survey-benefits sur-grid-item2">
+                <h4>Benefits</h4>
+                <ul>
+                    <li>Reduce field time and survey costs</li>
+                    <li>Provide accurate and exhaustive data</li>
+                    <li>Map otherwise inaccessible areas</li>
+                </ul>
+            </div>
+            <div class="sur-grid-item3">Image 1</div>
+            <div class="sur-grid-item4">Image 2</div>
+            <div class="survey-measure sur-grid-item5">
+                <h4>Measurements</h4>
+                <ul>
+                    <li>Stockpile volumetric measurements</li>
+                    <li>Slope monitoring</li>
+                    <li>Cut and fill profiles</li>
+                </ul>
+            </div>
+            <div class="survey-del sur-grid-item6">
+                <h4>Deliverables</h4>
+                <ul>
+                    <li>Orthomosaic maps</li>
+                    <li>3D point cloud</li>
+                    <li>Digital surface models</li>
+                    <li>Digital terrain models</li>
+                    <li>Contour lines</li>
+                    <li>3D textured mesh</li>
+                </ul>
+            </div>
+            <div class="sur-grid-item7">
+                <button>Request Service</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--
+<div class="login-video">
+    <video autoplay muted loop>
+        <source  src="/static/RPAS Capabilities.mp4" type="video/mp4">
+    </video>
+</div>
+-->
+{% endblock %}
